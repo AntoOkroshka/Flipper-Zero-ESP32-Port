@@ -36,7 +36,7 @@ jobs:
             flash_size: 8MB
           - name: my_diy_board
             script_key: diy
-            build_dir: build_dir
+            build_dir: build_diy
             artifact_name: flipper-my-diy-board
             chip: esp32s3
             flash_size: 8MB
@@ -93,11 +93,16 @@ jobs:
           echo "IDF_PATH=$IDF_PATH"
           idf.py --version
 
-      - name: Build
+            - name: Build
         run: |
           source ~/esp/esp-idf/export.sh
-          bash ./build.sh --board ${{ matrix.board.script_key }} --build-only
 
+          if [ "${{ matrix.board.script_key }}" = "diy" ]; then
+            bash ./build_diy.sh
+          else
+            bash ./build.sh --board "${{ matrix.board.script_key }}" --build-only
+          fi
+          
       - name: Package artifacts
         run: |
           BOARD="${{ matrix.board.name }}"
