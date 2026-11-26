@@ -93,7 +93,7 @@ jobs:
           echo "IDF_PATH=$IDF_PATH"
           idf.py --version
 
-            - name: Build
+       - name: Build
         run: |
           source ~/esp/esp-idf/export.sh
 
