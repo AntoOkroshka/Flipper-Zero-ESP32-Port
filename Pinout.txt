@@ -19,7 +19,7 @@ SPI_MISO=13
 LCD_CS=10
 LCD_DC=9
 LCD_RST=8
-LCD_BL=36
+LCD_BL=42
 
 # --- SD card ---
 SD_CS=3
