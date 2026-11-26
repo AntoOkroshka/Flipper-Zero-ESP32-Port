@@ -105,7 +105,6 @@ jobs:
           else
             bash ./build.sh --board "${{ matrix.board.script_key }}" --build-only
           fi
-
       - name: Package artifacts
         run: |
           BOARD="${{ matrix.board.name }}"
