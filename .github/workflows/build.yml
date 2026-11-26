@@ -87,18 +87,17 @@ jobs:
         run: |
           ~/esp/esp-idf/install.sh all
 
-      - name: Verify ESP-IDF environment
-        run: |
+       - name: Verify ESP-IDF environment
+         run: |
           source ~/esp/esp-idf/export.sh
           echo "IDF_PATH=$IDF_PATH"
           idf.py --version
 
-       - name: Build
+      - name: Build
         run: |
           source ~/esp/esp-idf/export.sh
-
           if [ "${{ matrix.board.script_key }}" = "diy" ]; then
-            bash ./build_diy.sh
+            bash ./build_diy.sh --build-only
           else
             bash ./build.sh --board "${{ matrix.board.script_key }}" --build-only
           fi
